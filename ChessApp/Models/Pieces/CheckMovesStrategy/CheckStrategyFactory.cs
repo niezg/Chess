@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ChessApp.Models.Pieces
 {
-    public static class SetCheckStrategy
+    public class CheckStrategyFactory : ICheckStrategyFactory
     {
-        public static ICheckStrategy GetStrategy(KindsOfPiece kindsOfPiece)
+        public ICheckStrategy Create(KindsOfPiece kindsOfPiece)
         {
             switch (kindsOfPiece)
             {

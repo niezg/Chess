@@ -58,9 +58,7 @@ namespace ChessApp
                 {
                     Chessboard.Pieces[position].IsChecked = true;
 
-                    CheckStrategy = SetCheckStrategy.GetStrategy(Chessboard.Pieces[position].Kind);
-
-                    PossibleMovies = CheckStrategy.CheckMovies(position);
+                    PossibleMovies = Chessboard.Pieces[position].CheckStrategy.CheckMovies(position);
 
                     FirstPosition = position;
                 

@@ -11,7 +11,12 @@ namespace ChessApp
     {
         public Dictionary<string, IPiece> Pieces { get; set; }
 
+        internal void MoveTo(string firstPosition, string position)
+        {
+            throw new NotImplementedException();
+        }
+
         //SelectField();
-        
+
     }
 }

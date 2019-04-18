@@ -9,12 +9,13 @@ namespace ChessApp.Models.Pieces
 {
     public interface IPiece
     {
-        ColoursOfPiece PieceColor { get; set; }
+        ColoursOfPiece PieceColour { get; set; }
 
         KindsOfPiece Kind { get; set; }
 
         bool IsChecked { get; set; }
 
+        ICheckStrategy Strategy { get; set; }
 
 
         //protected readonly List<string> possibleMoves;

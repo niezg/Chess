@@ -9,7 +9,7 @@ namespace ChessApp.Models.Pieces
 {
     class BishopCheckStrategy : ICheckStrategy
     {
-        public static List<string> Bishop(string position)
+        public static List<string> CheckMovies(string position)
         {
             var possibleActions = new List<string>();
             var positionXY = new Position(position);
