@@ -19,10 +19,28 @@ namespace ChessApp
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
+
     {
+        private static Game game;
+
         public MainWindow()
         {
             InitializeComponent();
         }
+
+        
+
+        private void A8_Click(object sender, RoutedEventArgs e) => ClickActions("a8");
+        private void A7_Click(object sender, RoutedEventArgs e) => ClickActions("a7");
+        private void A6_Click(object sender, RoutedEventArgs e) => ClickActions("a6");
+        private void A5_Click(object sender, RoutedEventArgs e) => ClickActions("a5");
+
+        private static void ClickActions(string position)
+        {
+            if (game != null)
+                game.ClickField(position);
+        }
+
+        
     }
 }
