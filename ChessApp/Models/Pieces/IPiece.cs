@@ -1,4 +1,5 @@
 ﻿
+using ChessApp.Models.Chessboard;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,17 +10,11 @@ namespace ChessApp.Models.Pieces
 {
     public interface IPiece
     {
-        ColoursOfPiece PieceColour { get; set; }
+        ColourOfPiece Colour { get; set; }
 
-        KindsOfPiece Kind { get; set; }
+        KindOfPiece Kind { get; set; }
 
-        bool IsChecked { get; set; }
+        ICheckStrategy CheckStrategy { get; set; }
 
-        ICheckStrategy Strategy { get; set; }
-
-
-        //protected readonly List<string> possibleMoves;
-
-        //abstract public void Move();
     }
 }

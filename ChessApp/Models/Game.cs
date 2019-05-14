@@ -3,74 +3,75 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ChessApp.Models.Chessboard;
 using ChessApp.Models.Pieces;
-using ChessApp.Models.Pieces.ActionsStrategy;
+
 
 namespace ChessApp
 {
     class Game
     {
-        public Chessboard Chessboard { get; set; }
-        private ColoursOfPiece PlayerColour { get; set; }
-        private ICheckStrategy CheckStrategy { get; set; }
-        private bool IsSomePieceChecked { get; set; }
-        private string FirstPosition { get; set; }
-        private List<string> PossibleMovies { get; set; }
+        private ChessboardModel Chessboard { get; set; }
+        private ColourOfPiece PlayerColour { get; set; }
+        private Position? FirstPosition { get; set; }
 
-        internal void ClickField(string position)
+        internal void ClickField(Position position)
         {
-            if (Chessboard.Pieces[position].IsChecked)
+            if(FirstPosition == null)
             {
-                Chessboard.Pieces[position].IsChecked = false;
-                FirstPosition = "None";
-            }
-            else if (FirstPosition == "None")
-            {
+                FirstPosition = position;
                 FirstClick(position);
+            }
+            else if(position == FirstPosition.Value)
+            {
+                FirstPosition = null;
             }
             else
             {
                 SecondClick(position);
             }
-
-            //IPiece piece = new IPiece()
-            
         }
-
-        private void SecondClick(string position)
+        private void FirstClick(Position position)
         {
-            if (PossibleMovies.Contains(position))
+            var selectedPiece = Chessboard[position].Piece;
+
+            if (IsPlayerPiece(selectedPiece))
             {
-                Chessboard.MoveTo(FirstPosition, position);
-                FirstPosition = "None";
+                {
+                    selectedPiece.CheckStrategy.CheckMovies(position, Chessboard);
+                }
             }
         }
 
-        private void FirstClick(string position)
+        private bool IsPlayerPiece(IPiece selectedPiece) => selectedPiece.Colour == PlayerColour;
+
+        private void SecondClick(Position position)
         {
-            if (Chessboard.Pieces[position].PieceColor == PlayerColour)
+            var playerPiece = Chessboard[FirstPosition.Value].Piece;
+
+            if (playerPiece.CheckStrategy.CheckMovies(FirstPosition.Value, Chessboard).Contains(position.ToString()))
             {
-                if (Chessboard.Pieces[position].IsChecked)
-                {
-                    Chessboard.Pieces[position].IsChecked = false;
-                }
-                else
-                {
-                    Chessboard.Pieces[position].IsChecked = true;
-
-                    PossibleMovies = Chessboard.Pieces[position].CheckStrategy.CheckMovies(position);
-
-                    FirstPosition = position;
+                Chessboard.MoveStrategy.Move(FirstPosition.Value, position, Chessboard);
                 
-                }
+                ChangePlayer();
             }
         }
 
-        public Game()
+        private void ChangePlayer()
         {
-            Chessboard = new Chessboard();
-            PlayerColour = ColoursOfPiece.White;
-            FirstPosition = "None";
+            FirstPosition = null;
+
+            if (PlayerColour == ColourOfPiece.Black)
+                PlayerColour = ColourOfPiece.White;
+            else
+                PlayerColour = ColourOfPiece.Black;
+        }
+
+        public Game(TypeOfGame kindOfGame)
+        {
+            IBoardFactory boardFactory = new BoardFactory();
+            Chessboard = (ChessboardModel) boardFactory.Create(kindOfGame);
+            PlayerColour = ColourOfPiece.White;
         }
     }
 }

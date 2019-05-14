@@ -2,6 +2,6 @@
 {
     internal interface IPieceFactory
     {
-        IPiece Create(ColoursOfPiece colour, KindsOfPiece kind);
+        IPiece Create(ColourOfPiece colour, KindOfPiece kind);
     }
 }

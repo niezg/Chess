@@ -63,6 +63,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CheckMovesStrategy\Castling.cs" />
+    <Compile Include="CheckMovesStrategy\ValidateMethod.cs" />
+    <Compile Include="Models\Chessboard\BoardFactory.cs" />
     <Compile Include="Models\Chessboard\Chessboard.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -70,32 +73,32 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Chessboard\Field.cs" />
+    <Compile Include="Models\Chessboard\IBoard.cs" />
+    <Compile Include="Models\Chessboard\IBoardFactory.cs" />
+    <Compile Include="Models\Chessboard\IMove.cs" />
+    <Compile Include="Models\Chessboard\TypeOfGame.cs" />
+    <Compile Include="Models\Chessboard\ChessMovie.cs" />
+    <Compile Include="Models\Chessboard\TypeOfField.cs" />
     <Compile Include="Models\Game.cs" />
-    <Compile Include="Models\Pieces\ActionsStrategy - Copy\BishopActionsStrategy.cs" />
-    <Compile Include="Models\Pieces\ActionsStrategy - Copy\CheckActions.cs" />
-    <Compile Include="Models\Pieces\ActionsStrategy - Copy\IActionsStrategy.cs" />
-    <Compile Include="Models\Pieces\ActionsStrategy - Copy\KingActionsStrategy.cs" />
-    <Compile Include="Models\Pieces\ActionsStrategy - Copy\Knight.cs" />
-    <Compile Include="Models\Pieces\ActionsStrategy - Copy\PawnActionsStrategy.cs" />
-    <Compile Include="Models\Pieces\ActionsStrategy - Copy\Position.cs" />
-    <Compile Include="Models\Pieces\ActionsStrategy - Copy\Queen.cs" />
-    <Compile Include="Models\Pieces\ActionsStrategy - Copy\Rook.cs" />
-    <Compile Include="Models\Pieces\CheckMovesStrategy\ICheckStrategyFactory.cs" />
-    <Compile Include="Models\Pieces\CheckMovesStrategy\PawnCheckStrategy.cs" />
-    <Compile Include="Models\Pieces\CheckMovesStrategy\QueenCheckStrategy.cs" />
-    <Compile Include="Models\Pieces\CheckMovesStrategy\RookCheckStrategy.cs" />
-    <Compile Include="Models\Pieces\CheckMovesStrategy\CheckStrategyFactory.cs" />
-    <Compile Include="Models\Pieces\CheckMovesStrategy\ICheckStrategy.cs" />
-    <Compile Include="Models\Pieces\ColoursOfPiece.cs" />
+    <Compile Include="CheckMovesStrategy\ICheckStrategyFactory.cs" />
+    <Compile Include="CheckMovesStrategy\PawnCheckStrategy.cs" />
+    <Compile Include="CheckMovesStrategy\QueenCheckStrategy.cs" />
+    <Compile Include="CheckMovesStrategy\RookCheckStrategy.cs" />
+    <Compile Include="CheckMovesStrategy\CheckStrategyFactory.cs" />
+    <Compile Include="CheckMovesStrategy\ICheckStrategy.cs" />
+    <Compile Include="Models\Pieces\ColourOfPiece.cs" />
+    <Compile Include="Models\Pieces\IDifferentFirstMove.cs" />
     <Compile Include="Models\Pieces\IPieceFactory.cs" />
-    <Compile Include="Models\Pieces\KindsOfPiece.cs" />
-    <Compile Include="Models\Pieces\CheckMovesStrategy\Position.cs" />
-    <Compile Include="Models\Pieces\CheckMovesStrategy\BishopCheckStrategy.cs" />
-    <Compile Include="Models\Pieces\CheckMovesStrategy\KingCheckStrategy.cs" />
-    <Compile Include="Models\Pieces\CheckMovesStrategy\KnightCheckStrategy.cs" />
+    <Compile Include="Models\Pieces\KindOfPiece.cs" />
+    <Compile Include="Models\Chessboard\Position.cs" />
+    <Compile Include="CheckMovesStrategy\BishopCheckStrategy.cs" />
+    <Compile Include="CheckMovesStrategy\KingCheckStrategy.cs" />
+    <Compile Include="CheckMovesStrategy\KnightCheckStrategy.cs" />
     <Compile Include="Models\Pieces\IPiece.cs" />
-    <Compile Include="Models\Pieces\Piece.cs" />
-    <Compile Include="Models\Pieces\PieceFactory.cs" />
+    <Compile Include="Models\Pieces\AdvancePiece.cs" />
+    <Compile Include="Models\Pieces\ChessPiece.cs" />
+    <Compile Include="Models\Pieces\ChessPieceFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
