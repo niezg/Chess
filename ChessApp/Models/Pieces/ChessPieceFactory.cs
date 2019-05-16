@@ -8,10 +8,10 @@ namespace ChessApp.Models.Pieces
 {
     public class ChessPieceFactory : IPieceFactory
     {
-        public IPiece Create(ColourOfPiece colour, KindOfPiece kind)
+        public IPiece Create(ColourOfPiece colour, KindOfPiece kind, bool isFirstMovie = true)
         {
             ICheckStrategyFactory checkStrategyFactory = new CheckStrategyFactory();
-            ICheckStrategy checkStrategy = checkStrategyFactory.Create(kind);
+            ICheckStrategy checkStrategy = checkStrategyFactory.Create(kind, isFirstMovie);
             return new ChessPiece(colour, kind, checkStrategy);
         }
     }

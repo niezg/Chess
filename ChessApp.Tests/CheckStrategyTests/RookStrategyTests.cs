@@ -29,7 +29,7 @@ namespace ChessApp.Tests.CheckStrategyTests
             //Arrange
             var chessboard = new ChessboardModel(new ChessMovie());
             var pieceFactory = new ChessPieceFactory();
-            chessboard["b3"].Piece = pieceFactory.Create(ColourOfPiece.White, KindOfPiece.Rook);
+            chessboard["b3"].Piece = pieceFactory.Create(ColourOfPiece.White, KindOfPiece.Rook, false);
             chessboard["a4"].Piece = pieceFactory.Create(ColourOfPiece.Black, KindOfPiece.Pawn);
             chessboard["d5"].Piece = pieceFactory.Create(ColourOfPiece.Black, KindOfPiece.Pawn);
             chessboard["d1"].Piece = pieceFactory.Create(ColourOfPiece.White, KindOfPiece.Pawn);

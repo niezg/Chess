@@ -8,7 +8,7 @@ namespace ChessApp.Models.Pieces
 {
     public class CheckStrategyFactory : ICheckStrategyFactory
     {
-        public ICheckStrategy Create(KindOfPiece kindsOfPiece)
+        public ICheckStrategy Create(KindOfPiece kindsOfPiece, bool isFirstMovie)
         {
             switch (kindsOfPiece)
             {
@@ -17,11 +17,11 @@ namespace ChessApp.Models.Pieces
                 case KindOfPiece.Queen:
                     return new QueenCheckStrategy();
                 case KindOfPiece.Rook:
-                    return new RookCheckStrategy();
+                    return new RookCheckStrategy(isFirstMovie);
                 case KindOfPiece.Pawn:
                     return new PawnCheckStrategy();
                 case KindOfPiece.King:
-                    return new KingCheckStrategy();
+                    return new KingCheckStrategy(isFirstMovie);
                 case KindOfPiece.Bishop:
                     return new BishopCheckStrategy();
             }

@@ -54,6 +54,8 @@ namespace ChessApp
                 Chessboard.MoveStrategy.Move(FirstPosition.Value, position, Chessboard);
                 
                 ChangePlayer();
+
+               // DisplayChanges();
             }
         }
 

@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CheckStrategyTests\BishopStrategyTests.cs" />
+    <Compile Include="CheckStrategyTests\CastligTests.cs" />
     <Compile Include="CheckStrategyTests\KnightStrategyTest.cs" />
     <Compile Include="CheckStrategyTests\KingStrategyTest.cs" />
     <Compile Include="CheckStrategyTests\QueenStrategyTests.cs" />

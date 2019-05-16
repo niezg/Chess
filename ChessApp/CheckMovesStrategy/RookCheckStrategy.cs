@@ -5,7 +5,7 @@ using ChessApp.Models.Chessboard;
 
 namespace ChessApp.Models.Pieces
 {
-    internal class RookCheckStrategy : ICheckStrategy
+    internal class RookCheckStrategy : ICheckStrategy, IDifferentFirstMove
     {
         private readonly ValidateMethod validateMethod;
         public bool IsFirstMove { get; set; }
@@ -30,11 +30,7 @@ namespace ChessApp.Models.Pieces
             possibleMovies.AddRange(validateMethod.CheckQuarter(0, -1, position, chessboard));
             possibleMovies.AddRange(validateMethod.CheckQuarter(0, 1, position, chessboard));
 
-            if (IsFirstMove)
-            {
-                var castling = new Castling();
-                possibleMovies.AddRange(castling.CheckMovies(position, chessboard));
-            }
+            
             return possibleMovies;
         }
     }

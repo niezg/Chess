@@ -26,6 +26,7 @@ namespace ChessApp.Models.Pieces
             possibleMovies.AddRange(validateMethod.CheckQuarter(-1, -2, position, chessboard, false));
             possibleMovies.AddRange(validateMethod.CheckQuarter(1, -2, position, chessboard, false));
 
+
             return possibleMovies;
         }
     }

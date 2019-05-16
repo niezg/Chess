@@ -2,56 +2,109 @@
 using ChessApp.Models.Pieces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ChessApp.CheckMovesStrategy
 {
-    class Castling : ICheckStrategy
+    public class Castling : ICheckStrategy
     {
         public List<string> CheckMovies(Position position, ChessboardModel chessboard)
         {
             var possibleMovies = new List<string>();
-            if (AreLeftFieldsEmpty(position, chessboard))
-                if (AreRightFieldsEmpty(position, chessboard))
-                    if (AreRightFieldsNotAttacking(position, chessboard))
-                        if (AreRightFieldsNotAttacking(position, chessboard))
-                            return possibleMovies;
 
-                            return possibleMovies;
+            if (IsCastlingPossible(position, chessboard, TypeOfCastling.Long))
+                possibleMovies.Add(new Position(2, position.Y).ToString());
+            if (IsCastlingPossible(position, chessboard, TypeOfCastling.Short))
+                possibleMovies.Add(new Position(6, position.Y).ToString());
+
+            return possibleMovies;
         }
 
-        private bool AreRightFieldsNotAttacking(Position position, ChessboardModel chessboard)
+        private bool IsCastlingPossible(Position position, ChessboardModel chessboard, TypeOfCastling typeOfCastling)
         {
-            var fields = new List<string>();
+            int rookXPosition = 0;
+
+            if (typeOfCastling == TypeOfCastling.Short)
+                rookXPosition = 7;
+
+            var rook = chessboard[rookXPosition, position.Y].Piece;
+            if (rook == null || rook.Kind != KindOfPiece.Rook)
+                return false;
+
+            return (IsRookFirstMove(checkStrategy: rook.CheckStrategy)
+                    && AreCastlingFieldsEmpty(typeOfCastling, position, chessboard)
+                    && AreCastlingFieldsNotAttacking(typeOfCastling, position, chessboard));
+        }
+        private bool IsRookFirstMove(ICheckStrategy checkStrategy)
+        {
+            if (!(checkStrategy is IDifferentFirstMove firstMove))
+                throw new FormatException();
+
+            return firstMove.IsFirstMove;
+        }
+        private bool AreCastlingFieldsNotAttacking(TypeOfCastling typeOfCastling, Position position, ChessboardModel chessboard)
+        {
             var colour = chessboard[position].Piece.Colour;
 
-            for (int i = position.X + 1; i <= 6; i++)
-            {
-                fields.Add(new Position(i, position.Y).ToString());
-            }
-
+            List<string> checkedFields = GetCastlingFields(typeOfCastling, position.Y);
 
             for (int i = 0; i < 8; i++)
             {
                 for (int j = 0; j < 8; j++)
                 {
+                    var attackMovies = new List<string>();
+
                     if (chessboard.Fields[i, j].Piece != null &&
                          chessboard.Fields[i, j].Piece.Colour != colour)
                     {
-                        chessboard.Fields[i, j].Piece.CheckStrategy.CheckMovies(new Position(i, j), chessboard);
+                        attackMovies.AddRange(chessboard[i, j].Piece.CheckStrategy.CheckMovies(new Position(i, j), chessboard));
                     }
 
+                    if (!attackMovies.TrueForAll(a => !checkedFields.Contains(a)))
+                        return false;
                 }
             }
 
             return true;
         }
 
-        private bool AreRightFieldsEmpty(Position position, ChessboardModel chessboard)
+        private List<string> GetCastlingFields(TypeOfCastling typeOfCastling, int positionY)
         {
-            for (int i = position.X + 1; i <= 6; i++)
+            int firstXPosition = 0, lastXPosition = 0;
+            if (typeOfCastling == TypeOfCastling.Short)
+            {
+                firstXPosition = 4;
+                lastXPosition = 6;
+            }
+            else if (typeOfCastling == TypeOfCastling.Long)
+            {
+                firstXPosition = 2;
+                lastXPosition = 4;
+            }
+
+            var fields = new List<string>();
+            for (int i = firstXPosition; i <= lastXPosition; i++)
+            {
+                fields.Add(new Position(i, positionY).ToString());
+            }
+
+            return fields;
+        }
+
+        private bool AreCastlingFieldsEmpty(TypeOfCastling typeOfCastling, Position position, ChessboardModel chessboard)
+        {
+            int firstXPosition = 0, lastXPosition = 0;
+            if (typeOfCastling == TypeOfCastling.Short)
+            {
+                firstXPosition = 5;
+                lastXPosition = 6;
+            }
+            else if (typeOfCastling == TypeOfCastling.Long)
+            {
+                firstXPosition = 2;
+                lastXPosition = 3;
+            }
+
+            for (int i = firstXPosition; i <= lastXPosition; i++)
             {
                 if (chessboard.GetTypeOfField(new Position(i, position.Y)) != TypeOfField.Empty)
                     return false;
@@ -59,17 +112,11 @@ namespace ChessApp.CheckMovesStrategy
 
             return true;
         }
-
-        private bool AreLeftFieldsEmpty(Position position, ChessboardModel chessboard)
-        {
-            for (int i = position.X - 1; i >= 1; i--)
-            {
-                if (chessboard.GetTypeOfField(new Position(i, position.Y)) != TypeOfField.Empty)
-                    return false;
-            }
-
-            return true;
-        }
+    }
+    enum TypeOfCastling
+    {
+        Long,
+        Short
     }
 }
 

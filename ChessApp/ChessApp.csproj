@@ -63,6 +63,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CheckMovesStrategy\BadCastling.cs" />
     <Compile Include="CheckMovesStrategy\Castling.cs" />
     <Compile Include="CheckMovesStrategy\ValidateMethod.cs" />
     <Compile Include="Models\Chessboard\BoardFactory.cs" />
@@ -88,7 +89,7 @@
     <Compile Include="CheckMovesStrategy\CheckStrategyFactory.cs" />
     <Compile Include="CheckMovesStrategy\ICheckStrategy.cs" />
     <Compile Include="Models\Pieces\ColourOfPiece.cs" />
-    <Compile Include="Models\Pieces\IDifferentFirstMove.cs" />
+    <Compile Include="CheckMovesStrategy\IDifferentFirstMove.cs" />
     <Compile Include="Models\Pieces\IPieceFactory.cs" />
     <Compile Include="Models\Pieces\KindOfPiece.cs" />
     <Compile Include="Models\Chessboard\Position.cs" />

@@ -2,6 +2,6 @@
 {
     public interface ICheckStrategyFactory
     {
-        ICheckStrategy Create(KindOfPiece kindsOfPiece);
+        ICheckStrategy Create(KindOfPiece kindsOfPiece, bool isFirstMovie);
     }
 }

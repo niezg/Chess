@@ -2,6 +2,6 @@
 {
     internal interface IPieceFactory
     {
-        IPiece Create(ColourOfPiece colour, KindOfPiece kind);
+        IPiece Create(ColourOfPiece colour, KindOfPiece kind, bool isFirstMovie = true);
     }
 }
