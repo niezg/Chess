@@ -63,9 +63,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CheckMovesStrategy\BadCastling.cs" />
-    <Compile Include="CheckMovesStrategy\Castling.cs" />
+    <Compile Include="CheckMovesStrategy\Decorators\KingDecorators\CastlingValidations.cs" />
+    <Compile Include="CheckMovesStrategy\Decorators\FirstMovieDecorator.cs" />
+    <Compile Include="CheckMovesStrategy\Decorators\KingDecorators\LongCastlingDecorator.cs" />
+    <Compile Include="CheckMovesStrategy\Decorators\KingDecorators\ShortCastlingDecorator.cs" />
+    <Compile Include="CheckMovesStrategy\Decorators\IDecorator.cs" />
+    <Compile Include="CheckMovesStrategy\Decorators\KingDecorators\TypeOfCastling.cs" />
     <Compile Include="CheckMovesStrategy\ValidateMethod.cs" />
+    <Compile Include="Common\Range.cs" />
     <Compile Include="Models\Chessboard\BoardFactory.cs" />
     <Compile Include="Models\Chessboard\Chessboard.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -89,7 +94,7 @@
     <Compile Include="CheckMovesStrategy\CheckStrategyFactory.cs" />
     <Compile Include="CheckMovesStrategy\ICheckStrategy.cs" />
     <Compile Include="Models\Pieces\ColourOfPiece.cs" />
-    <Compile Include="CheckMovesStrategy\IDifferentFirstMove.cs" />
+    <Compile Include="CheckMovesStrategy\IFirstMove.cs" />
     <Compile Include="Models\Pieces\IPieceFactory.cs" />
     <Compile Include="Models\Pieces\KindOfPiece.cs" />
     <Compile Include="Models\Chessboard\Position.cs" />
@@ -100,6 +105,7 @@
     <Compile Include="Models\Pieces\AdvancePiece.cs" />
     <Compile Include="Models\Pieces\ChessPiece.cs" />
     <Compile Include="Models\Pieces\ChessPieceFactory.cs" />
+    <Compile Include="View\ViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -125,5 +131,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\ChessPieces\blackKing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="blackKing.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

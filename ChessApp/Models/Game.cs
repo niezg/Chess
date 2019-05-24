@@ -55,7 +55,7 @@ namespace ChessApp
                 
                 ChangePlayer();
 
-               // DisplayChanges();
+               //DisplayChanges();
             }
         }
 

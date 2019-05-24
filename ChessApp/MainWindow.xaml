@@ -10,7 +10,7 @@
         <Button x:Name="a8" Content="" HorizontalAlignment="Left" Height="60" Margin="80,80,0,0" VerticalAlignment="Top" Width="60" Click="A8_Click"/>
         <Button x:Name="b8" Content="" HorizontalAlignment="Left" Height="60" Margin="140,80,0,0" VerticalAlignment="Top" Width="60"/>
         <Button x:Name="c8" Content="" HorizontalAlignment="Left" Height="60" Margin="200,80,0,0" VerticalAlignment="Top" Width="60"/>
-        <Button x:Name="d8" Content="" HorizontalAlignment="Left" Height="60" Margin="260,80,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="d8" Content="" HorizontalAlignment="Left" Height="60" Margin="260,80,0,0" VerticalAlignment="Top" Width="60" Background="#FF7F3C02" Image.ImageFailed="blackKing.png"/>
         <Button x:Name="e8" Content="" HorizontalAlignment="Left" Height="60" Margin="320,80,0,0" VerticalAlignment="Top" Width="60"/>
         <Button x:Name="f8" Content="" HorizontalAlignment="Left" Height="60" Margin="380,80,0,0" VerticalAlignment="Top" Width="60"/>
         <Button x:Name="g8" Content="" HorizontalAlignment="Left" Height="60" Margin="440,80,0,0" VerticalAlignment="Top" Width="60"/>

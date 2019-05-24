@@ -28,6 +28,7 @@ namespace ChessApp
         {
             InitializeComponent();
             game = new Game(TypeOfGame.Chess);
+            UstawOdpStanNaWidoku
         }
 
         
@@ -101,8 +102,18 @@ namespace ChessApp
         {
             if (game != null)
                 game.ClickField(new Position(position));
+
+           OdświWidok()
         }
 
-        
+        private void D8_ImageFailed(object sender, ExceptionRoutedEventArgs e)
+        {
+
+        }
+
+        private void D8_ImageFailed_1(object sender, ExceptionRoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChessApp.Models.Pieces
 {
-    public interface IDifferentFirstMove
+    public interface IFirstMove
     {
-        bool IsFirstMove { get; set; }
     }
 }
